@@ -1,3 +1,40 @@
+// this is main render, all components are route children off it
+
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { Router } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
+
+class Root extends Component() {
+
+  render() {
+    return (
+    <navbar>
+      <Link to="/" >Home</Link>
+      <Link to="/students" >Students</Link>
+    </navbar>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Campuses} />
+          <Route path="/campus/:id" component={SingleCampus} />
+          <Route path="/students" component={Students} />
+          <Route component={Campuses} />
+        </Switch>
+      </Router>
+    )
+  }
+}
+
+const mapStateToProps;
+
+const mapDispatchToProps = dispatch => ({
+  // fetch data from database for initial load
+  // all campuses and students are props of root, to be passed down to children routes
+})
+
+export default connect()(Root);
+
+/*
 import React, { Component } from 'react';
 
 export default class WinterJokes extends Component {
@@ -25,7 +62,7 @@ export default class WinterJokes extends Component {
   render() {
     if (!this.state) { return null }
 
-    const {joke, answered} = this.state    
+    const {joke, answered} = this.state
     return (
       <div>
         <h1 onClick={answered ? this.nextJoke : this.answer}>{joke.q}</h1>
@@ -61,7 +98,7 @@ Q: What did the ocean say to the bergy bits?
 A: Nothing. It just waved.
 Q: What sits on the bottom of the cold Arctic Ocean and shakes?
 A: A nervous wreck.
-Q: How do you know if there's a snowman in your bed? 
+Q: How do you know if there's a snowman in your bed?
 A: You wake up wet!
 Q: How do you tell the difference between a walrus and an orange?
 A: Put your arms around it and squeeze it. If you don't get orange juice, it's a walrus.
@@ -113,3 +150,4 @@ A: They're both below C level!`
     ? [...all, {q: row}]
     : [...all.slice(0, all.length - 1), Object.assign({a: row}, all[all.length - 1])],
     [])
+*/
