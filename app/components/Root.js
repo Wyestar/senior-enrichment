@@ -18,12 +18,24 @@ class Root extends Component() {
           <Route exact path="/" component={Campuses} />
           <Route path="/campus/:id" component={SingleCampus} />
           <Route path="/students" component={Students} />
+          <Route path="/student/:id" component={SingleStudent} />
+          <Route path="/new-student" component={StudentEntry} />
           <Route component={Campuses} />
         </Switch>
       </Router>
     )
   }
 }
+
+// for editing, add entry field within commponents, add local state?
+
+// EXTRA FEATURE
+// add feature where admins can log in and see emails of students
+// regular user is any user, log in is for admins only
+// and adds just one priviledge
+// admin access is enabled by a password which is 'JAIHM'
+// logout button appears after, routes to regular user and redirects to
+// campus page
 
 const mapStateToProps;
 
@@ -34,6 +46,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect()(Root);
 
+//////////////////////////////////////////////
 /*
 import React, { Component } from 'react';
 

@@ -1,4 +1,5 @@
 const db = require('./index');
+// const Sequelize = require('sequelize');
 
 const Students = db.define('students', {
   name: Sequelize.STRING,

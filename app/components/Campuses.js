@@ -6,7 +6,6 @@ import { fetchCampuses } from '../reducers/campusReducer';
 
 class Campuses extends component {
 
-
   // break out objects from props?
   // otherwise use this.props.thing for now
 
@@ -40,6 +39,7 @@ class Campuses extends component {
 const mapStateToProps = function(state) {
   return {
     campuses: state.campuses
+    // campus: state.campus
   }
 }
 

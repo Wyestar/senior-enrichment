@@ -8,7 +8,7 @@ const initialState = {
   campuses: []
 };
 
-const NEW_CAMPUS;
+// const NEW_CAMPUS;
 // bundle this action with NEW_STUDENT, otherwise two distinct reducers must be used.
 // the student/campus association can properly put the inputs into the db
 
@@ -32,8 +32,8 @@ function getCampuses(campuses) {
 }
 
 // thunk
-const fetchCampus = () => dispatch => {
-  axios.get('/api/campus')
+const fetchCampus = (campus) => dispatch => {
+  axios.get(`/api/campus/${campus.id}`)
   .then(res => res.data)
   .then(campus => dispatch(getCampus(campus)))
   .catch(err);
@@ -45,9 +45,6 @@ const fetchCampuses = () => dispatch => {
   .then(campuses => dispatch(getCampuses(campuses)))
   .catch(err);
 }
-
-
-
 
 // reducer
 function campusReducer(state = initialState, action) {

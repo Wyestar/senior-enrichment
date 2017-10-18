@@ -18,3 +18,8 @@
 import Students from './students';
 import Campuses from './campuses';
 Students.belongsTo(Campuses);
+
+// export?
+module.exports = {
+  Students, Campuses
+}
