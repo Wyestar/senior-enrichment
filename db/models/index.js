@@ -13,13 +13,12 @@
 // This is also probably a good place for you to set up your associations
 // belongsto?
 
-// const Campuses = require('./campuses');
+const Students = require('./students');
+const Campuses = require('./campuses');
 
-import Students from './students';
-import Campuses from './campuses';
 Students.belongsTo(Campuses);
+// as: campusId
 
-// export?
 module.exports = {
   Students, Campuses
 }

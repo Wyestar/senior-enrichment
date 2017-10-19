@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 
 class StudentEntry extends Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: null,
+      email: null,
+      campusId: null
+    }
+  }
   // local state for editting
 
   // addStudentAndCampus
@@ -13,9 +20,16 @@ class StudentEntry extends Component {
     // rerender student list
 
   // onclick for submit
-  submitNewStudent() {
+  onChangeHandler() {
 
   }
+
+  onSubmitHandler() {
+    // sends
+  }
+
+  // studentdb
+  // axios post function call
 
   render() {
     // entry component goes away

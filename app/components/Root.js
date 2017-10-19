@@ -3,23 +3,23 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Router } from 'react-router';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
+import Navbar from './Navbar';
+
+// fetch initial state?
 
 class Root extends Component() {
 
   render() {
     return (
-    <navbar>
-      <Link to="/" >Home</Link>
-      <Link to="/students" >Students</Link>
-    </navbar>
+    <Navbar />
       <Router>
         <Switch>
           <Route exact path="/" component={Campuses} />
           <Route path="/campus/:id" component={SingleCampus} />
-          <Route path="/students" component={Students} />
-          <Route path="/student/:id" component={SingleStudent} />
-          <Route path="/new-student" component={StudentEntry} />
+          // <Route path="/students" component={Students} />
+          // <Route path="/student/:id" component={SingleStudent} />
+          // <Route path="/new-student" component={StudentEntry} />
           <Route component={Campuses} />
         </Switch>
       </Router>

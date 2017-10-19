@@ -1,11 +1,15 @@
-const db = require('./index');
-// const Sequelize = require('sequelize');
+const db = require('../index');
+const Sequelize = require('sequelize');
 
 const Campuses = db.define('campuses', {
+  // id: {
+  //   type: Sequelize.INTEGER,
+  //   primaryKey: true
+  // },
   name: Sequelize.STRING,
   image: Sequelize.STRING
-  // image url will be a string
-  // needs student association, none to many
+  // createdAt: Sequelize.DATE,
+  // updatedAt: Sequelize.DATE
 })
 
 module.exports = Campuses;

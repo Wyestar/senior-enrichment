@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { fetchCampuses } from '../reducers/campusReducer';
+import { Link } from 'react-router-dom';
+
 
 // this component is also home
 //

@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { fetchStudents } from '../reducers/studentReducer';
+
+import { Link } from 'react-router-dom';
+
 
 // action types/creators?
 // have delete student button here
@@ -25,7 +29,7 @@ class Students extends Component {
                 </div>
                 <div>
                 {campuses.campus.name}
-                // match each student and campus 
+                // match each student and campus
               </li>
             </Link>
           )
