@@ -21,6 +21,8 @@ class Students extends Component {
                   <Link to={`/student/${student.id}`}>
                     {student.name}
                   </Link>
+                </div>
+                <div>
                   <Link to={`/campus/${student.campus.id}`}>
                     {student.campus.name}
                   </Link>

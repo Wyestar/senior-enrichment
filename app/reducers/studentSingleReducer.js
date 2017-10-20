@@ -11,7 +11,6 @@ export function getStudent(student) {
   }
 }
 
-
 export const fetchStudent = (studentId) => dispatch => {
   axios.get(`/api/student/${studentId}`)
   .then(res => res.data)
@@ -22,7 +21,7 @@ export const newStudent = (name, email, campusId) => {
   return axios.post('/api/student', {name, email, campusId});
 };
 
-export default function studentReducer(state = initialState, action) {
+export default function studentSingleReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case VIEW_STUDENT:

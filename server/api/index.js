@@ -11,23 +11,19 @@ const Sequelize = require('sequelize');
 	// Ideally you would have something to handle this, so if you have time try that out!
 api.get('/hello', (req, res) => res.send({hello: 'world'}))
 
-// routes here for now?
 api.get('/', (req, res, next) => {
-  // console.log(db)
   db.models.campuses.findAll()
   .then(campuses => res.json(campuses))
   .catch(next)
 });
 
 api.get('/campuses', (req, res, next) => {
-  // console.log(db)
   db.models.campuses.findAll()
   .then(campuses => res.json(campuses))
   .catch(next)
 });
 
 api.get('/campus/:id', (req, res, next) => {
-  // console.log(db)
   db.models.campuses.findOne({
     where: {
       id: req.params.id
@@ -38,25 +34,24 @@ api.get('/campus/:id', (req, res, next) => {
 });
 
 api.put('/campus/:id', (req, res, next) => {
-    db.models.campuses.update(req.body, { where: { id: req.params.id } }).then(campus => res.status(200).json(campus)).catch((err) => {
-        console.log(err)
-    })
+  db.models.campuses.update(req.body, { where: { id: req.params.id } }).then(campus => res.status(200).json(campus)).catch((err) => {
+    console.log(err)
+  })
 });
 
 api.post('/campus', (req, res, next) => {
-    db.models.campuses.create(req.body).then(campus => res.status(201).json(campus)).catch((err) => {
-        console.log(err)
-    })
+  db.models.campuses.create(req.body).then(campus => res.status(201).json(campus)).catch((err) => {
+    console.log(err)
+  })
 })
 
 api.delete('/campus/:id', (req, res, next) => {
-    db.models.campuses.destroy({ where: { id: req.params.id } }).then(campus => res.status(200).json(campus)).catch((err) => {
-        console.log(err)
-    })
+  db.models.campuses.destroy({ where: { id: req.params.id } }).then(campus => res.status(200).json(campus)).catch((err) => {
+    console.log(err)
+  })
 });
 
 api.get('/students', (req, res, next) => {
-  // console.log(db)
   db.models.students.findAll()
   .then(students => res.json(students))
   .catch(next)
@@ -80,15 +75,15 @@ api.post('/student', (req, res, next) => {
 });
 
 api.put('/student/:id', (req, res, next) => {
-    db.models.students.update(req.body, { where: { id: req.params.id } }).then(student => res.status(200).json(student)).catch((err) => {
-        console.log(err)
-    })
+  db.models.students.update(req.body, { where: { id: req.params.id } }).then(student => res.status(200).json(student)).catch((err) => {
+    console.log(err)
+  })
 });
 
 api.delete('/student/:id', (req, res, next) => {
-    db.models.students.destroy({ where: { id: req.params.id } }).then(student => res.status(200).json(student)).catch((err) => {
-        console.log(err)
-    })
+  db.models.students.destroy({ where: { id: req.params.id } }).then(student => res.status(200).json(student)).catch((err) => {
+    console.log(err)
+  })
 });
 
 module.exports = api

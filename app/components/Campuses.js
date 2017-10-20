@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchCampuses } from '../reducers/campusReducer';
+import { fetchCampuses, deleteCampus } from '../reducers/campusReducer';
 import axios from 'axios';
 
 class Campuses extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      campus: null
+      name: null,
+      image: null
     }
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -27,8 +28,9 @@ class Campuses extends Component {
   }
 
   onSubmitHandler() {
-    const campus = this.state.campus;
-    axios.post('/api/campus', {name: campus});
+    const campusName = this.state.name;
+    const campusImage = this.state.image;
+    axios.post('/api/campus', {name: campusName, image: campusImage});
   }
 
   render() {
@@ -40,16 +42,24 @@ class Campuses extends Component {
             this.props.campuses &&
             this.props.campuses.map(campus => (
               <li key={campus.id}>
-                <Link  to={`/campus/${campus.id}`}>
-                  {campus.name}
-                </Link>
+                <div>
+                  <Link  to={`/campus/${campus.id}`}>
+                    {campus.name}
+                  </Link>
+                </div>
+                <button onClick={this.props.deleteCampus(campus.id)}>DELETE</button>
               </li>
             ))
           }
           </ul>
-        Add Campus
-          <input type="text" onChange={this.onChangeHandler('campus')} />
-          <button onClick={this.onSubmitHandler} >SUBMIT</button>
+        <h2>Add Campus</h2>
+          <form>
+            <p>Campus Name</p>
+              <input onChange={this.onChangeHandler('name')} type="text" />
+            <p>Campus Image, please provide an image url</p>
+              <input onChange={this.onChangeHandler('image')} type="text" />
+            <button onClick={this.onSubmitHandler} >SUBMIT</button>
+          </form>
       </div>
       )
     }
@@ -65,6 +75,11 @@ const mapDispatchToProps = function(dispatch) {
   return {
     getCampuses() {
       dispatch(fetchCampuses())
+    },
+    deleteCampus(campusId) {
+      return () => {
+        dispatch(deleteCampus(campusId))
+      }
     }
   }
 }

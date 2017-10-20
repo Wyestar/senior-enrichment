@@ -17,16 +17,20 @@ export const fetchCampuses = () => dispatch => {
   .then(campuses => dispatch(getCampuses(campuses)))
 }
 
+export const deleteCampus = (campusId) => dispatch => {
+  axios.delete(`/api/campus/${campusId}`)
+  .then(res => res.data)
+  .then(() => {
+    fetchCampuses()(dispatch)
+  })
+}
+
 export default function campusReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
   switch (action.type) {
-    // case VIEW_CAMPUS:
-    //   return action.campus;
     case VIEW_ALL_CAMPUSES:
       return action.campuses;
     default:
       return state;
   }
 }
-
-// export default campusReducer;

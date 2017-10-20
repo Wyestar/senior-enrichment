@@ -42,9 +42,9 @@ class StudentEntry extends Component {
       <div>
         <h2>Add Student</h2>
           <form>
-            Student Name
+            <p>Student Name</p>
               <input onChange={this.onChangeHandler('name')} type="text" />
-            Campus
+            <p>Campus</p>
               <select onChange={this.onChangeHandler('campusId')}>
               <option>CHOOSE CAMPUS</option>
               {
@@ -53,7 +53,7 @@ class StudentEntry extends Component {
                 })
               }
               </select>
-            Student Email
+            <p>Student Email</p>
               <input onChange={this.onChangeHandler('email')} type="text" />
             <button onClick={this.onSubmitHandler}>SUBMIT</button>
           </form>

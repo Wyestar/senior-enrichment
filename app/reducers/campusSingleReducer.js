@@ -17,7 +17,11 @@ export const fetchCampus = (campusId) => dispatch => {
   .then(campus => dispatch(getCampus(campus)))
 }
 
-export default function campusReducer(state = initialState, action) {
+export const newCampus = (name, image) => {
+  return axios.post('/api/campus', {name, image});
+};
+
+export default function campusSingleReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case VIEW_CAMPUS:
