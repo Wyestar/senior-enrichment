@@ -1,4 +1,4 @@
-// this is for manually rebuilding database. student's campusid may need to be changed due to uniqueness and associations with campuses.
+// this is for manually rebuilding the database. student's campusid may need to be changed due to uniqueness and associations with campuses.
 
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Bob Ross', 'br@email.com', 5, now(), now());
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Gandalf', 'g@email.com', 5, now(), now());
@@ -11,7 +11,7 @@ INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") 
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Pattabhi Jois', 'pj@email.com', 7, now(), now());
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Angela Merkel', 'am@email.com', 7, now(), now());
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Ben Adaephon', 'ba@email.com', 8, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Yennefer of Vengerberg', 'yov@email.com', 8, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Yennefer of Vengerberg', 'MIRROR@telecommunicator.sorc', 8, now(), now());
 
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUES ('Brandeis', 'https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Brandeis_University_seal.svg/1024px-Brandeis_University_seal.svg.png', now(), now());
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUES ('Cornell', 'https://www2.vet.cornell.edu/sites/all/themes/cornell_cvm/images/cvm/cuseal_full_red.png', now(), now());
