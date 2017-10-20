@@ -9,6 +9,7 @@ import SingleStudent from './SingleStudent';
 import StudentEntry from './StudentEntry';
 import { fetchCampuses } from '../reducers/campusReducer';
 import StudentEdit from './StudentEdit';
+import CampusEdit from './CampusEdit';
 
 export default function Root() {
   return (
@@ -18,11 +19,13 @@ export default function Root() {
         <Switch>
           <Route exact path="/" component={Campuses} />
           <Route path="/campuses" component={Campuses} />
-          <Route path="/campus/:id" component={SingleCampus} />
+          <Route exact path="/campus/:id" component={SingleCampus} />
+          <Route exact path="/campus/:id/edit" component={CampusEdit} />
           <Route path="/students" component={Students} />
           <Route exact path="/student/:id" component={SingleStudent} />
           <Route exact path="/student/:id/edit" component={StudentEdit} />
           <Route path="/studententry" component={StudentEntry} />
+          <Route component={Campuses} />
         </Switch>
       </div>
     </Router>

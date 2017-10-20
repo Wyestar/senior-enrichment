@@ -29,6 +29,9 @@ class SingleCampus extends Component {
           ))
         }
         </ul>
+        <div>
+          <Link to={`/campus/${this.props.campus.id}/edit`}>Edit Campus</Link>
+        </div>
       </div>
     )
   }

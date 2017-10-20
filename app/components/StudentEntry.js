@@ -30,17 +30,15 @@ class StudentEntry extends Component {
 
   onSubmitHandler() {
     const { name, email, campusId } = this.state;
-    axios.post('/api/student', {name, email, campusId}).then(() => {
-      return this.props.history.push('/students')
-    }).catch((err) => {
-      console.log(err)
-    });
+    console.log(campusId);
+    axios.post('/api/student', {name, email, campusId})
+    this.props.history.push('/');
   }
 
   render() {
     return (
       <div>
-        <h2>Add Student</h2>
+        <h4>Add Student</h4>
           <form>
             <p>Student Name</p>
               <input onChange={this.onChangeHandler('name')} type="text" />

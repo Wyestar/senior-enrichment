@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const initialState = [];
 
-const REMOVE_STUDENT = 'REMOVE_STUDENT';
 const VIEW_ALL_STUDENTS = 'VIEW_ALL_STUDENTS';
 
 export function getStudents(students) {

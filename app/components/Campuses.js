@@ -31,12 +31,13 @@ class Campuses extends Component {
     const campusName = this.state.name;
     const campusImage = this.state.image;
     axios.post('/api/campus', {name: campusName, image: campusImage});
+    this.props.history.push('/campuses');
   }
 
   render() {
     return (
       <div>
-        Campuses
+        <h3>Campuses</h3>
           <ul>
           {
             this.props.campuses &&
@@ -52,7 +53,7 @@ class Campuses extends Component {
             ))
           }
           </ul>
-        <h2>Add Campus</h2>
+        <h4>Add Campus</h4>
           <form>
             <p>Campus Name</p>
               <input onChange={this.onChangeHandler('name')} type="text" />

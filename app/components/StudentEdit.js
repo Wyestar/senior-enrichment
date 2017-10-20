@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCampuses } from "../reducers/campusReducer"
-import axios from 'axios';
 import { fetchStudent } from '../reducers/studentSingleReducer';
+import axios from 'axios';
 
 class StudentEdit extends Component {
   constructor(props) {
@@ -41,11 +41,8 @@ class StudentEdit extends Component {
 
   onSubmitHandler() {
     const { name, email, campusId } = this.state;
-    axios.put(`/api/student/${this.props.student.id}`, {name, email, campusId}).then(() => {
-      return this.props.history.push('/students')
-    }).catch((err) => {
-      console.log(err)
-    });
+    axios.put(`/api/student/${this.props.student.id}`, {name, email, campusId})
+    this.props.history.push(`/student/${this.props.student.id}`);
   }
 
   render() {
@@ -54,9 +51,9 @@ class StudentEdit extends Component {
       <div>
         <h3>Edit Student</h3>
           <form>
-            Student Name
+            <p>Student Name</p>
               <input onChange={this.onChangeHandler('name')} type="text" value={name} />
-            Campus
+            <p>Campus</p>
               <select onChange={this.onChangeHandler('campusId')}>
               <option>CHOOSE CAMPUS</option>
               {
@@ -65,7 +62,7 @@ class StudentEdit extends Component {
                 })
               }
               </select>
-            Student Email
+            <p>Student Email</p>
               <input onChange={this.onChangeHandler('email')} type="text" value={email}/>
               <button onClick={this.onSubmitHandler}>SUBMIT</button>
           </form>

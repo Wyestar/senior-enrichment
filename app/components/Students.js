@@ -9,9 +9,10 @@ class Students extends Component {
   }
 
   render() {
+    console.log(this.props.students.length && this.props.students[0].campus ,'students props')
     return (
       <div>
-        Students
+        <h3>Students</h3>
           <ul>
           {
             this.props.students &&
@@ -23,15 +24,18 @@ class Students extends Component {
                   </Link>
                 </div>
                 <div>
-                  <Link to={`/campus/${student.campus.id}`}>
-                    {student.campus.name}
+                  <Link to={`/campus/${student.campusId}`}>
+                  {
+                    student.campus &&
+                    student.campus.name
+                  }
                   </Link>
                 </div>
                 <button onClick={this.props.deleteStudent(student.id)}>DELETE</button>
               </li>
             ))
           }
-        </ul>
+          </ul>
       </div>
     )
   }

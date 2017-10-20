@@ -12,13 +12,15 @@ class SingleStudent extends Component {
     const campus =this.props.student.campus;
     return (
       <div>
-        SingleStudent
-          <h4>{this.props.student.name}</h4>
-          <p>{this.props.student.email}</p>
-          {
-            campus &&
-            <Link to={`/campus/${this.props.student.campusId}`} >{campus.name}</Link>
-          }
+        <h4>{this.props.student.name}</h4>
+        <p>{this.props.student.email}</p>
+        {
+          campus &&
+          <Link to={`/campus/${this.props.student.campusId}`} >{campus.name}</Link>
+        }
+        <div>
+          <Link to={`/student/${this.props.student.id}/edit`}>Edit Student</Link>
+        </div>
       </div>
     )
   }
