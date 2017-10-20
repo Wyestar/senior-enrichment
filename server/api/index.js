@@ -46,7 +46,10 @@ api.post('/campus', (req, res, next) => {
 })
 
 api.delete('/campus/:id', (req, res, next) => {
-  db.models.campuses.destroy({ where: { id: req.params.id } }).then(campus => res.status(200).json(campus)).catch((err) => {
+  db.models.students.destroy( { where: { campusId: req.params.id } })
+  .then(db.models.campuses.destroy( { where: { id: req.params.id } } ))
+  .then(campus => res.status(200).json(campus))
+  .catch((err) => {
     console.log(err)
   })
 });

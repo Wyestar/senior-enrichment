@@ -17,7 +17,7 @@ const Students = require('./students');
 const Campuses = require('./campuses');
 
 Students.belongsTo(Campuses);
-// as: campusId
+
 
 module.exports = {
   Students, Campuses
