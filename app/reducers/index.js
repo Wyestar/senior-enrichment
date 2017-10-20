@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux'
-// import { studentReducer } from './studentReducer';
+import { combineReducers } from 'redux';
 import campuses from './campusReducer';
 import singlecampus from './campusSingleReducer';
 import students from './studentReducer';

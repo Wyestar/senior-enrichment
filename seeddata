@@ -1,3 +1,5 @@
+// this is for manually rebuilding database. student's campusid may need to be changed due to uniqueness and associations with campuses.
+
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Bob Ross', 'br@email.com', 5, now(), now());
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Gandalf', 'g@email.com', 5, now(), now());
 INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Ronald Reagan', 'rr@email.com', 5, now(), now());

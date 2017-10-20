@@ -9,21 +9,13 @@ import SingleStudent from './SingleStudent';
 import StudentEntry from './StudentEntry';
 import { fetchCampuses } from '../reducers/campusReducer';
 import StudentEdit from './StudentEdit';
-
-// fetch initial state?
+import CampusEntry from './CampusEntry';
 
 export default function Root() {
-
-  // componentDidMount() {
-  //   this.props.fetchCampuses()
-  // }
-
-  // render() {
-    // console.log(this.props ,'root props');
-    return (
-      <Router>
+  return (
+    <Router>
       <div>
-      <Navbar />
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Campuses} />
           <Route path="/campuses" component={Campuses} />
@@ -32,40 +24,12 @@ export default function Root() {
           <Route exact path="/student/:id" component={SingleStudent} />
           <Route exact path="/student/:id/edit" component={StudentEdit} />
           <Route path="/studententry" component={StudentEntry} />
+          <Route path="/campusentry" component={CampusEntry} />
         </Switch>
-        </div>
-      </Router>
-
-    )
+      </div>
+    </Router>
+  )
 }
-
-// <Route path="/user" render={ (props) => <component example="something" { ...props } /> } />
-
-// const mapStateToProps = ({
-//   campuses
-// }) => ({
-//   campuses
-// })
-//
-// const mapDispatchToProps = { fetchCampuses }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(Root);
-
-
-// <Route path="/students" component={Students} />
-// <Route path="/student/:id" component={SingleStudent} />
-// <Route path="/new-student" component={StudentEntry} />
-
-// for editing, add entry field within commponents, add local state?
-
-// EXTRA FEATURE
-// add feature where admins can log in and see emails of students
-// regular user is any user, log in is for admins only
-// and adds just one priviledge
-// admin access is enabled by a password which is 'JAIHM'
-// logout button appears after, routes to regular user and redirects to
-// campus page
-
 
 //////////////////////////////////////////////
 /*

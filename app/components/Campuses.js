@@ -15,42 +15,42 @@ class Campuses extends Component {
   }
 
   componentDidMount() {
-    this.props.getCampuses()
+    this.props.getCampuses();
   }
 
   onChangeHandler(fieldName) {
     return (event) => {
-        this.setState({
-            [fieldName]: event.target.value
-        })
+      this.setState({
+        [fieldName]: event.target.value
+      })
     }
   }
 
   onSubmitHandler() {
     const campus = this.state.campus;
-    axios.post('/api/campus', {name: campus})
+    axios.post('/api/campus', {name: campus});
   }
 
-    render() {
-      return (
-        <div>
+  render() {
+    return (
+      <div>
         Campuses
-        <ul>
-        {
-          this.props.campuses &&
-          this.props.campuses.map(campus => (
+          <ul>
+          {
+            this.props.campuses &&
+            this.props.campuses.map(campus => (
               <li key={campus.id}>
-                  <Link  to={`/campus/${campus.id}`}>
-                      {campus.name}
-                  </Link>
+                <Link  to={`/campus/${campus.id}`}>
+                  {campus.name}
+                </Link>
               </li>
-          ))
-        }
-        </ul>
-          Add Campus
+            ))
+          }
+          </ul>
+        Add Campus
           <input type="text" onChange={this.onChangeHandler('campus')} />
           <button onClick={this.onSubmitHandler} >SUBMIT</button>
-        </div>
+      </div>
       )
     }
 }
@@ -58,7 +58,6 @@ class Campuses extends Component {
 const mapStateToProps = function(state) {
   return {
     campuses: state.campuses
-    // campus: state.campus
   }
 }
 
@@ -70,5 +69,4 @@ const mapDispatchToProps = function(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Campuses)
-// export default Campuses;
+export default connect(mapStateToProps, mapDispatchToProps)(Campuses);
