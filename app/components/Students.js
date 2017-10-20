@@ -9,7 +9,6 @@ class Students extends Component {
   }
 
   render() {
-    console.log(this.props.students.length && this.props.students[0].campus ,'students props')
     return (
       <div>
         <h3>Students</h3>

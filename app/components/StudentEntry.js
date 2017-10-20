@@ -30,7 +30,6 @@ class StudentEntry extends Component {
 
   onSubmitHandler() {
     const { name, email, campusId } = this.state;
-    console.log(campusId);
     axios.post('/api/student', {name, email, campusId})
     this.props.history.push('/');
   }

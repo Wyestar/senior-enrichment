@@ -16,7 +16,6 @@ class CampusEdit extends Component {
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
 
-
   componentDidMount() {
     this.props.getCampus(this.props.match.params.id);
   }
@@ -44,7 +43,6 @@ class CampusEdit extends Component {
 
   render() {
     const { name, image } = this.state;
-    console.log(this.props);
     return (
       <div>
         <h3>Edit Campus</h3>

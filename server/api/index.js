@@ -1,6 +1,5 @@
 'use strict'
 const api = require('express').Router()
-// const db = require('../db')
 const db = require('../../db')
 const Sequelize = require('sequelize');
 
@@ -43,7 +42,7 @@ api.post('/campus', (req, res, next) => {
   db.models.campuses.create(req.body).then(campus => res.status(201).json(campus)).catch((err) => {
     console.log(err)
   })
-})
+});
 
 api.delete('/campus/:id', (req, res, next) => {
   db.models.students.destroy( { where: { campusId: req.params.id } })

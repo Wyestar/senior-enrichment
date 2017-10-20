@@ -11,13 +11,11 @@
   // everywhere
 
 // This is also probably a good place for you to set up your associations
-// belongsto?
 
 const Students = require('./students');
 const Campuses = require('./campuses');
 
 Students.belongsTo(Campuses);
-
 
 module.exports = {
   Students, Campuses
