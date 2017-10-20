@@ -3,13 +3,13 @@
 const { resolve } = require('path')
 
 module.exports = {
-  entry: './app/main.jsx',
+  entry: './app/main.js',
   output: {
     path: __dirname,
     filename: './public/bundle.js'
   },
   context: __dirname,
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   resolve: {
     extensions: ['.js', '.jsx']
   },

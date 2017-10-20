@@ -1,31 +1,58 @@
-// this is main render, all components are route children off it
-
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Router } from 'react-router';
-import { Route, Switch, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from './Navbar';
+import Campuses from './Campuses';
+import SingleCampus from './SingleCampus';
+import Students from './Students';
+import SingleStudent from './SingleStudent';
+import StudentEntry from './StudentEntry';
+import { fetchCampuses } from '../reducers/campusReducer';
 
 // fetch initial state?
 
-class Root extends Component() {
+export default function Root() {
 
-  render() {
+  // componentDidMount() {
+  //   this.props.fetchCampuses()
+  // }
+
+  // render() {
+    // console.log(this.props ,'root props');
     return (
-    <Navbar />
       <Router>
+      <div>
+      <Navbar />
         <Switch>
           <Route exact path="/" component={Campuses} />
+          <Route path="/campuses" component={Campuses} />
           <Route path="/campus/:id" component={SingleCampus} />
-          // <Route path="/students" component={Students} />
-          // <Route path="/student/:id" component={SingleStudent} />
-          // <Route path="/new-student" component={StudentEntry} />
-          <Route component={Campuses} />
+          <Route path="/students" component={Students} />
+          <Route path="/student/:id" component={SingleStudent} />
+          <Route path="/studententry" component={StudentEntry} />
         </Switch>
+        </div>
       </Router>
+
     )
-  }
 }
+
+// <Route path="/user" render={ (props) => <component example="something" { ...props } /> } />
+
+// const mapStateToProps = ({
+//   campuses
+// }) => ({
+//   campuses
+// })
+//
+// const mapDispatchToProps = { fetchCampuses }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(Root);
+
+
+// <Route path="/students" component={Students} />
+// <Route path="/student/:id" component={SingleStudent} />
+// <Route path="/new-student" component={StudentEntry} />
 
 // for editing, add entry field within commponents, add local state?
 
@@ -37,14 +64,6 @@ class Root extends Component() {
 // logout button appears after, routes to regular user and redirects to
 // campus page
 
-const mapStateToProps;
-
-const mapDispatchToProps = dispatch => ({
-  // fetch data from database for initial load
-  // all campuses and students are props of root, to be passed down to children routes
-})
-
-export default connect()(Root);
 
 //////////////////////////////////////////////
 /*

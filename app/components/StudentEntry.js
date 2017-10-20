@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-class StudentEntry extends Component {
+export default class StudentEntry extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,6 +13,8 @@ class StudentEntry extends Component {
   }
   // local state for editting
 
+  // need to pull in campus array from store state so it can be mapped in select/options
+
   // addStudentAndCampus
     // add input fields to state.
     // student is a string
@@ -19,36 +23,45 @@ class StudentEntry extends Component {
     // bundle all inputs into an object and findorcreate in db
     // rerender student list
 
-  // onclick for submit
-  onChangeHandler() {
-
+  onChangeHandler(event) {
+    this.setState({
+      name: {name: event.target.name.value},
+      email: {email: event.target.email.value},
+      campusId: {campusId: event.target.campusId.value}
+    })
+    console.log(this.state);
   }
 
   onSubmitHandler() {
-    // sends
+    // sends state to be posted/putted in db
+
   }
 
   // studentdb
   // axios post function call
 
   render() {
+    return (
     // entry component goes away
     // student list jsx re-renders
     // submit button route back to Students
-    <form>
       <h1>Add Student</h1>
-        <input
-          type="text"
-          student="">
 
-        // drop down menu
-        <select>
-          <options items=`${campuses}`>
-        </select>
-
-        // input needs to post to db, update state, and redirect to students list
-      <input type="submit" value="Submit">
-    </form>
+    )
   }
 
 }
+
+// <form>
+//     <input
+//       type="text"
+//       student="">
+//
+//     // drop down menu
+//     <select>
+//       <options items=`${campuses}`>
+//     </select>
+//
+//     // input needs to post to db, update state, and redirect to students list
+//   <input type="submit" value="Submit">
+// </form>

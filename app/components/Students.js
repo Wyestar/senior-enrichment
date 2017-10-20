@@ -1,43 +1,42 @@
 import React, { Component } from 'react';
-import { fetchStudents } from '../reducers/studentReducer';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { fetchStudents } from '../reducers/studentReducer';
 
 // action types/creators?
 // have delete student button here
 
 class Students extends Component {
-
-  // no state?
-  const { students, campuses } = props;
+  componentDidMount() {
+    this.props.getStudents();
+  }
 
   render() {
-    // jsx with mapped list of students from array in store state
-    <ul>
-
-    {
-      // {campuses}
-      // add campus image and other styling to this home page
-      // from singlecampus page, require home to be reclicked to come back to all campus page
-      students.map(student => {
-          return (
-            <Link to={`/student/${student.id}`}>
-              <li key={student.id}>
-                <div>
-                {student.name}
-                </div>
-                <div>
-                {campuses.campus.name}
-                // match each student and campus
-              </li>
+    console.log(this.props ,'students props');
+    return (
+      <div>
+      Students
+      <ul>
+      {
+        this.props.students &&
+        this.props.students.map(student => (
+          <li key={student.id}>
+            <div>
+              <Link to={`/student/${student.id}`}>
+                  {student.name}
+              </Link>
+            </div>
+            <Link to={`/campus/${student.campus.id}`}>
+              {student.campus.name}
             </Link>
-          )
-        })
+          </li>
+        ))
       }
-
       </ul>
-    }
+      </div>
+    )
+  }
+}
 
     // seperate jsx for:
     // need a button to add a student and associated campus, submit button adds
@@ -47,8 +46,6 @@ class Students extends Component {
     // Extra credit feature
     // student list of all students; this has a delete button that will remove
     // the student from the database, also causes a rerender
-  }
-}
 
 
 // students must be able to be added and deleted from lists
@@ -60,10 +57,10 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    fetchStudentsData: () => {
+    getStudents() {
       dispatch(fetchStudents())
     }
   }
 }
 
-export default connect()(Students);
+export default connect(mapStateToProps, mapDispatchToProps)(Students);

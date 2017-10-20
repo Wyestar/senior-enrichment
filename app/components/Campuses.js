@@ -1,41 +1,46 @@
 import React, { Component } from 'react';
-import { fetchCampuses } from '../reducers/campusReducer';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchCampuses } from '../reducers/campusReducer';
 
+// class Campuses extends Component {}
 
-// this component is also home
-//
-
-class Campuses extends component {
+class Campuses extends Component {
 
   // break out objects from props?
   // otherwise use this.props.thing for now
-
-  const { campuses } = props;
+  componentDidMount() {
+    this.props.getCampuses()
+  }
+  // const { campuses } = props;
   // props.campuses?
+  //
 
-  render() {
+    // console.log(props ,'campuses props');
+    // console.log(campuses);
     // campus div with toggle-able single campus div
     // select and option tags are for drop-down menu
     // amount of campuses is static, but mapping for rerender is fine
-    <ul>
-    {
-      // {campuses}
-      // add campus image and other styling to this home page
-      // from singlecampus page, require home to be reclicked to come back to all campus page
-      campuses.map(campus => {
-        return (
-          <Link to={`/campus/${campus.id}`}>
-            <li key={campus.id}>
-              {campus.image}
-            </li>
-          </Link>
-        )
-      })
+
+    render() {
+      return (
+        <div>
+        Campuses
+        <ul>
+        {
+          this.props.campuses &&
+          this.props.campuses.map(campus => (
+              <li>
+                  <Link key={campus.id} to={`/campus/${campus.id}`}>
+                      {campus.name}
+                  </Link>
+              </li>
+          ))
+        }
+        </ul>
+        </div>
+      )
     }
-    </ul>
-  }
-  // END OF RENDER
 }
 
 const mapStateToProps = function(state) {
@@ -47,10 +52,11 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    fetchCampusesData: () => {
+    getCampuses() {
       dispatch(fetchCampuses())
     }
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Campuses)
+// export default Campuses;
