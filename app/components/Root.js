@@ -8,6 +8,7 @@ import Students from './Students';
 import SingleStudent from './SingleStudent';
 import StudentEntry from './StudentEntry';
 import { fetchCampuses } from '../reducers/campusReducer';
+import StudentEdit from './StudentEdit';
 
 // fetch initial state?
 
@@ -28,7 +29,8 @@ export default function Root() {
           <Route path="/campuses" component={Campuses} />
           <Route path="/campus/:id" component={SingleCampus} />
           <Route path="/students" component={Students} />
-          <Route path="/student/:id" component={SingleStudent} />
+          <Route exact path="/student/:id" component={SingleStudent} />
+          <Route exact path="/student/:id/edit" component={StudentEdit} />
           <Route path="/studententry" component={StudentEntry} />
         </Switch>
         </div>
