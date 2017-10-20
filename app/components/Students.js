@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchStudents } from '../reducers/studentReducer';
+import { fetchStudents, deleteStudent } from '../reducers/studentReducer';
 
 // action types/creators?
 // have delete student button here
@@ -29,6 +29,7 @@ class Students extends Component {
             <Link to={`/campus/${student.campus.id}`}>
               {student.campus.name}
             </Link>
+            <button onClick={this.props.deleteStudent(student.id)}>DELETE</button>
           </li>
         ))
       }
@@ -59,6 +60,11 @@ const mapDispatchToProps = function(dispatch) {
   return {
     getStudents() {
       dispatch(fetchStudents())
+    },
+    deleteStudent(studentId) {
+        return () => {
+            dispatch(deleteStudent(studentId))
+        }
     }
   }
 }

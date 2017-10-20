@@ -2,25 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCampuses } from '../reducers/campusReducer';
-
-// class Campuses extends Component {}
+import axios from 'axios';
 
 class Campuses extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      campus: null
+    }
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
+  }
 
-  // break out objects from props?
-  // otherwise use this.props.thing for now
   componentDidMount() {
     this.props.getCampuses()
   }
-  // const { campuses } = props;
-  // props.campuses?
-  //
 
-    // console.log(props ,'campuses props');
-    // console.log(campuses);
-    // campus div with toggle-able single campus div
-    // select and option tags are for drop-down menu
-    // amount of campuses is static, but mapping for rerender is fine
+  onChangeHandler(fieldName) {
+    return (event) => {
+        this.setState({
+            [fieldName]: event.target.value
+        })
+    }
+  }
+
+  onSubmitHandler() {
+    const campus = this.state.campus;
+    axios.post('/api/campus', {name: campus})
+  }
 
     render() {
       return (
@@ -30,14 +39,17 @@ class Campuses extends Component {
         {
           this.props.campuses &&
           this.props.campuses.map(campus => (
-              <li>
-                  <Link key={campus.id} to={`/campus/${campus.id}`}>
+              <li key={campus.id}>
+                  <Link  to={`/campus/${campus.id}`}>
                       {campus.name}
                   </Link>
               </li>
           ))
         }
         </ul>
+          Add Campus
+          <input type="text" onChange={this.onChangeHandler('campus')} />
+          <button onClick={this.onSubmitHandler} >SUBMIT</button>
         </div>
       )
     }

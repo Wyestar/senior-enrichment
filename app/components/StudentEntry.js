@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchCampuses } from "../reducers/campusReducer"
+import axios from 'axios';
 
-export default class StudentEntry extends Component {
+class StudentEntry extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,58 +12,70 @@ export default class StudentEntry extends Component {
       email: null,
       campusId: null
     }
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
-  // local state for editting
+  componentDidMount() {
+      this.props.getCampuses()
+  }
 
-  // need to pull in campus array from store state so it can be mapped in select/options
-
-  // addStudentAndCampus
-    // add input fields to state.
-    // student is a string
-    // campus is from a drop-down menu
-    // add email option?
-    // bundle all inputs into an object and findorcreate in db
-    // rerender student list
-
-  onChangeHandler(event) {
-    this.setState({
-      name: {name: event.target.name.value},
-      email: {email: event.target.email.value},
-      campusId: {campusId: event.target.campusId.value}
-    })
-    console.log(this.state);
+  onChangeHandler(fieldName) {
+     return (event) => {
+         this.setState({
+             [fieldName]: event.target.value
+         });
+     }
   }
 
   onSubmitHandler() {
-    // sends state to be posted/putted in db
-
+      const {name, email, campusId} = this.state;
+      axios.post('/api/student', {name, email, campusId}).then(() => {
+           return this.props.history.push('/students')
+    }).catch((err) => {
+          console.log(err)
+      });
   }
-
-  // studentdb
-  // axios post function call
 
   render() {
     return (
-    // entry component goes away
-    // student list jsx re-renders
-    // submit button route back to Students
-      <h1>Add Student</h1>
+        <div>
+          <h1>Add Student</h1>
+        <form>
+          Student Name
+            <input onChange={this.onChangeHandler('name')} type="text" />
+          Campus
+            <select onChange={this.onChangeHandler('campusId')}>
+                <option>CHOOSE CAMPUS</option>
+                {
+                    this.props.campuses.map(campus => {
+                    return <option key={campus.id} value={campus.id}>{campus.name}</option>
+                    })
+                }
+            </select>
 
+          Student Email
+          <input onChange={this.onChangeHandler('email')} type="text" />
+          <button onClick={this.onSubmitHandler}>Submit</button>
+        </form>
+        </div>
     )
   }
 
 }
 
-// <form>
-//     <input
-//       type="text"
-//       student="">
-//
-//     // drop down menu
-//     <select>
-//       <options items=`${campuses}`>
-//     </select>
-//
-//     // input needs to post to db, update state, and redirect to students list
-//   <input type="submit" value="Submit">
-// </form>
+const mapStateToProps = function(state) {
+  return {
+    campuses: state.campuses
+  }
+}
+
+const mapDispatchToProps = function(dispatch) {
+    return {
+        getCampuses() {
+            dispatch(fetchCampuses())
+        },
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentEntry);

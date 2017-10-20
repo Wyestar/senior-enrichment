@@ -73,6 +73,7 @@ api.get('/student/:id', (req, res, next) => {
 });
 
 api.post('/student', (req, res, next) => {
+    console.log(req.body)
   db.models.students.create(req.body).then(student => res.status(201).json(student)).catch((err) => {
     console.log(err)
   })

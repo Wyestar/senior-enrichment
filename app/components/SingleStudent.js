@@ -17,14 +17,17 @@ class SingleStudent extends Component {
   // add an exit button to remove singlecampus view and return to home page
   render() {
     // console.log(this.props.campus)
-    console.log(this.props.student.id ,'student id');
-
+    // console.log(this.props.student.id ,'student id');
+  const campus =this.props.student.campus;
   return (
     <div>
     SingleStudent
 
         <h1>{this.props.student.name}</h1>
         <p>{this.props.student.email}</p>
+        { campus &&
+            <Link to={`/campus/${this.props.student.campusId}`} >{campus.name}</Link>
+        }
     </div>
     )
   }
@@ -34,8 +37,8 @@ class SingleStudent extends Component {
 
 const mapStateToProps = function(state) {
   return {
-    student: state.singlestudent
-    // campus: state.campus
+    student: state.singlestudent,
+    campuses: state.campuses
   }
 }
 
@@ -49,16 +52,3 @@ const mapDispatchToProps = function(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleStudent);
 
-// <div>
-// <h2>{campus.name}</h2>
-//   {
-//     campus.students.map(student => (
-//         <Link to="studenturl" >
-//           <li key={student.id}>
-//             {student.name}
-//           </li>
-//         </Link>
-//       ))
-//   }
-//   </div>
-// single student

@@ -4,7 +4,7 @@ const initialState = [];
 
 // action type
 // const NEW_STUDENT = 'NEW_STUDENT';
-// const REMOVE_STUDENT = 'REMOVE_STUDENT';
+const REMOVE_STUDENT = 'REMOVE_STUDENT';
 // const VIEW_STUDENT = 'VIEW_STUDENT';
 const VIEW_ALL_STUDENTS = 'VIEW_ALL_STUDENTS';
 
@@ -37,12 +37,21 @@ export const fetchStudents = () => dispatch => {
   .then(students => dispatch(getStudents(students)))
 }
 
+export const deleteStudent = (studentId) => dispatch => {
+    console.log('hey')
+    axios.delete(`/api/student/${studentId}`)
+        .then(res => res.data)
+        .then(() => {
+            fetchStudents()(dispatch)
+        })
+}
+
 // reducer
 export default function studentReducer(state = initialState, action) {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case VIEW_ALL_STUDENTS:
-      return action.students;
+        return action.students
     default:
       return state;
   }
