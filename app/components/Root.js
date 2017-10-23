@@ -11,7 +11,6 @@ import StudentEdit from './StudentEdit';
 import CampusEdit from './CampusEdit';
 import Login from './Login';
 import CreateUser from './CreateUser';
-import { fetchCampuses } from '../reducers/campusReducer';
 
 export default function Root() {
   return (

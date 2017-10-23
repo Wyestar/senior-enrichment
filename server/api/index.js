@@ -33,24 +33,22 @@ api.get('/campus/:id', (req, res, next) => {
 });
 
 api.put('/campus/:id', (req, res, next) => {
-  db.models.campuses.update(req.body, { where: { id: req.params.id } }).then(campus => res.status(200).json(campus)).catch((err) => {
-    console.log(err)
-  })
+  db.models.campuses.update(req.body, { where: { id: req.params.id } })
+  .then(campus => res.status(200).json(campus))
+  .catch(next)
 });
 
 api.post('/campus', (req, res, next) => {
-  db.models.campuses.create(req.body).then(campus => res.status(201).json(campus)).catch((err) => {
-    console.log(err)
-  })
+  db.models.campuses.create(req.body)
+  .then(campus => res.status(201).json(campus))
+  .catch(next)
 });
 
 api.delete('/campus/:id', (req, res, next) => {
   db.models.students.destroy( { where: { campusId: req.params.id } })
   .then(db.models.campuses.destroy( { where: { id: req.params.id } } ))
   .then(campus => res.status(200).json(campus))
-  .catch((err) => {
-    console.log(err)
-  })
+  .catch(next)
 });
 
 api.get('/students', (req, res, next) => {
@@ -70,27 +68,27 @@ api.get('/student/:id', (req, res, next) => {
 });
 
 api.post('/student', (req, res, next) => {
-  db.models.students.create(req.body).then(student => res.status(201).json(student)).catch((err) => {
-    console.log(err)
-  })
+  db.models.students.create(req.body)
+  .then(student => res.status(201).json(student))
+  .catch(next)
 });
 
 api.put('/student/:id', (req, res, next) => {
-  db.models.students.update(req.body, { where: { id: req.params.id } }).then(student => res.status(200).json(student)).catch((err) => {
-    console.log(err)
-  })
+  db.models.students.update(req.body, { where: { id: req.params.id } })
+  .then(student => res.status(200).json(student))
+  .catch(next)
 });
 
 api.delete('/student/:id', (req, res, next) => {
-  db.models.students.destroy({ where: { id: req.params.id } }).then(student => res.status(200).json(student)).catch((err) => {
-    console.log(err)
-  })
+  db.models.students.destroy({ where: { id: req.params.id } })
+  .then(student => res.status(200).json(student))
+  .catch(next)
 });
 
 api.post('/newuser', (req, res, next) => {
-  db.models.users.create(req.body).then(student => res.status(201).json(student)).catch((err) => {
-    console.log(err)
-  })
+  db.models.users.create(req.body)
+  .then(student => res.status(201).json(student))
+  .catch(next)
 });
 
 api.get('/login', (req, res, next) => {

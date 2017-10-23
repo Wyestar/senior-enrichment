@@ -9,6 +9,7 @@ class SingleCampus extends Component {
     this.props.getCampus(this.props.match.params.id);
     this.props.fetchStudents();
   }
+  
   render() {
     const { adminStatus } = this.props;
     const campusId = this.props.campus.id;

@@ -1,20 +1,25 @@
 // this is for manually rebuilding the database. student's campusid may need to be changed due to uniqueness and associations with campuses.
+// there is a problem in which adding a campus as admin logs the admin out
+// no authentication for creating new admins, admin account is provided
 
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Bob Ross', 'br@email.com', 5, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Gandalf', 'g@email.com', 5, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Ronald Reagan', 'rr@email.com', 5, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Hamburglar', 'yourburgersaremine@beef.net', 6, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Florence Nightingale', 'fn@email.com', 6, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Nimit Yang', 'ny@email.com', 9, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('David Maru', 'dm@email.com', 9, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Kondo Isami', 'ki@email.com', 7, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Pattabhi Jois', 'pj@email.com', 7, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Angela Merkel', 'am@email.com', 7, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Ben Adaephon', 'ba@email.com', 8, now(), now());
-INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Yennefer of Vengerberg', 'MIRROR@telecommunicator.sorc', 8, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Bob Ross', 'br@email.com', 1, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Gandalf', 'g@email.com', 1, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Ronald Reagan', 'rr@email.com', 3, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Hamburglar', 'yourburgersaremine@beef.net', 2, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Florence Nightingale', 'fn@email.com', 2, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Nimit Yang', 'ny@email.com', 5, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('David Maru', 'dm@email.com', 5, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Kondo Isami', 'ki@email.com', 3, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Pattabhi Jois', 'pj@email.com', 3, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Angela Merkel', 'am@email.com', 3, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Ben Adaephon', 'ba@email.com', 4, now(), now());
+INSERT INTO public.students (name, email, "campusId", "createdAt", "updatedAt") VALUES ('Yennefer of Vengerberg', 'MIRROR@telecommunicator.sorc', 4, now(), now());
 
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUES ('Brandeis', 'https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Brandeis_University_seal.svg/1024px-Brandeis_University_seal.svg.png', now(), now());
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUES ('Cornell', 'https://www2.vet.cornell.edu/sites/all/themes/cornell_cvm/images/cvm/cuseal_full_red.png', now(), now());
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUES ('Scripps', 'https://cchdo.ucsd.edu/static/svg/logo_sio_color.svg', now(), now());
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUES ('Academy of Taco Bell', 'https://yt3.ggpht.com/-FpGhMt_4z_4/AAAAAAAAAAI/AAAAAAAAAAA/2kT323mx7a0/s900-c-k-no-mo-rj-c0xffffff/photo.jpg', now(), now());
 INSERT INTO public.campuses (name, image, "createdAt", "updatedAt") VALUEs ('Welton', 'https://ih0.redbubble.net/image.11144324.7958/raf,750x1000,075,t,5e504c:7bf03840f4.jpg', now(), now());
+
+INSERT INTO public.users (username, password, admin, "createdAt", "updatedAt") VALUES ('admin', 'adminpw', true, now(), now());
+INSERT INTO public.users (username, password, admin, "createdAt", "updatedAt") VALUES ('regular', 'regularpw', false, now(), now());

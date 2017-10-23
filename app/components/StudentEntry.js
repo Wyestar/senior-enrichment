@@ -38,9 +38,13 @@ class StudentEntry extends Component {
     const { adminStatus } = this.props;
     return (
       <div>
-      <h2>This feature is only availible to admins</h2>
       {
-          adminStatus &&
+        !adminStatus &&
+        <h2>This feature is only availible to admins</h2>
+      }
+
+      {
+        adminStatus &&
         <div>
           <h4>Add Student</h4>
             <form>
