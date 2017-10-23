@@ -35,25 +35,32 @@ class StudentEntry extends Component {
   }
 
   render() {
+    const { adminStatus } = this.props;
     return (
       <div>
-        <h4>Add Student</h4>
-          <form>
-            <p>Student Name</p>
-              <input onChange={this.onChangeHandler('name')} type="text" />
-            <p>Campus</p>
-              <select onChange={this.onChangeHandler('campusId')}>
-              <option>CHOOSE CAMPUS</option>
-              {
-                this.props.campuses.map(campus => {
-                  return <option key={campus.id} value={campus.id}>{campus.name}</option>
-                })
-              }
-              </select>
-            <p>Student Email</p>
-              <input onChange={this.onChangeHandler('email')} type="text" />
-            <button onClick={this.onSubmitHandler}>SUBMIT</button>
-          </form>
+      <h2>This feature is only availible to admins</h2>
+      {
+          adminStatus &&
+        <div>
+          <h4>Add Student</h4>
+            <form>
+              <p>Student Name</p>
+                <input onChange={this.onChangeHandler('name')} type="text" />
+              <p>Campus</p>
+                <select onChange={this.onChangeHandler('campusId')}>
+                <option>CHOOSE CAMPUS</option>
+                {
+                  this.props.campuses.map(campus => {
+                    return <option key={campus.id} value={campus.id}>{campus.name}</option>
+                  })
+                }
+                </select>
+              <p>Student Email</p>
+                <input onChange={this.onChangeHandler('email')} type="text" />
+              <button onClick={this.onSubmitHandler}>SUBMIT</button>
+            </form>
+        </div>
+      }
       </div>
     )
   }
@@ -61,7 +68,8 @@ class StudentEntry extends Component {
 
 const mapStateToProps = function(state) {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
+    adminStatus: state.log.adminStatus
   }
 }
 

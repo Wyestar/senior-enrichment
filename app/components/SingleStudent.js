@@ -9,6 +9,7 @@ class SingleStudent extends Component {
   }
 
   render() {
+    const { adminStatus } = this.props;
     const campus =this.props.student.campus;
     return (
       <div>
@@ -18,9 +19,13 @@ class SingleStudent extends Component {
           campus &&
           <Link to={`/campus/${this.props.student.campusId}`} >{campus.name}</Link>
         }
-        <div>
-          <Link to={`/student/${this.props.student.id}/edit`}>Edit Student</Link>
-        </div>
+
+        {
+          adminStatus &&
+          <div>
+            <Link to={`/student/${this.props.student.id}/edit`}>Edit Student</Link>
+          </div>
+        }
       </div>
     )
   }
@@ -29,7 +34,8 @@ class SingleStudent extends Component {
 const mapStateToProps = function(state) {
   return {
     student: state.singlestudent,
-    campuses: state.campuses
+    campuses: state.campuses,
+    adminStatus: state.log.adminStatus
   }
 }
 

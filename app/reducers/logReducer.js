@@ -10,13 +10,13 @@ const LOGGED_IN = 'LOGGED_IN';
 export const getUser = (username, password) => dispatch => {
   axios.get(`/api/login?username=${username}&password=${password}`)
   .then(user => {
-    console.log(user)
-    return dispatch({
-    type: LOGGED_IN,
-    loggedIn: true,
-    adminStatus: user.data.admin
+      console.log(user)
+      return dispatch({
+      type: LOGGED_IN,
+      loggedIn: true,
+      adminStatus: user.data.admin
+    })
   })
-})
 }
 
 export default function logReducer(state = initialState, action) {

@@ -35,6 +35,7 @@ class Campuses extends Component {
   }
 
   render() {
+    const { adminStatus } = this.props;
     return (
       <div>
         <h3>Campuses</h3>
@@ -48,19 +49,28 @@ class Campuses extends Component {
                     {campus.name}
                   </Link>
                 </div>
-                <button onClick={this.props.deleteCampus(campus.id)}>DELETE</button>
+                {
+                  adminStatus &&
+                  <button onClick={this.props.deleteCampus(campus.id)}>DELETE</button>
+                }
               </li>
             ))
           }
           </ul>
-        <h4>Add Campus</h4>
-          <form>
-            <p>Campus Name</p>
-              <input onChange={this.onChangeHandler('name')} type="text" />
-            <p>Campus Image, please provide an image url</p>
-              <input onChange={this.onChangeHandler('image')} type="text" />
-            <button onClick={this.onSubmitHandler} >SUBMIT</button>
-          </form>
+
+        {
+          adminStatus &&
+          <div>
+            <h4>Add Campus</h4>
+              <form>
+                <p>Campus Name</p>
+                  <input onChange={this.onChangeHandler('name')} type="text" />
+                <p>Campus Image, please provide an image url</p>
+                  <input onChange={this.onChangeHandler('image')} type="text" />
+                <button onClick={this.onSubmitHandler} >SUBMIT</button>
+              </form>
+          </div>
+        }
       </div>
     )
   }
@@ -68,7 +78,8 @@ class Campuses extends Component {
 
 const mapStateToProps = function(state) {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
+    adminStatus: state.log.adminStatus
   }
 }
 

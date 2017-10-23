@@ -10,6 +10,7 @@ class SingleCampus extends Component {
     this.props.fetchStudents();
   }
   render() {
+    const { adminStatus } = this.props;
     const campusId = this.props.campus.id;
     const studentArray = this.props.studentsAll.filter(function(student) {
       return (student.campusId === campusId)
@@ -29,9 +30,12 @@ class SingleCampus extends Component {
           ))
         }
         </ul>
-        <div>
-          <Link to={`/campus/${this.props.campus.id}/edit`}>Edit Campus</Link>
-        </div>
+        {
+          adminStatus &&
+          <div>
+            <Link to={`/campus/${this.props.campus.id}/edit`}>Edit Campus</Link>
+          </div>
+        }
       </div>
     )
   }
@@ -40,7 +44,8 @@ class SingleCampus extends Component {
 const mapStateToProps = function(state) {
   return {
     campus: state.singlecampus,
-    studentsAll: state.students
+    studentsAll: state.students,
+    adminStatus: state.log.adminStatus
   }
 }
 

@@ -24,6 +24,7 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    const redirect = this.props.history;
     return (
       <div>
         <div>
@@ -31,7 +32,7 @@ class Login extends Component {
             <input type="text" onChange={this.onChangeHandler('username')} />
           <p>Password</p>
             <input type="text" onChange={this.onChangeHandler('password')} />
-          <button onClick={this.props.getUser(username, password)}>LOGIN</button>
+          <button onClick={this.props.getUser(username, password, redirect)}>LOGIN</button>
         </div>
 
         <div>
@@ -44,9 +45,10 @@ class Login extends Component {
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    getUser(username, password) {
+    getUser(username, password, redirect) {
       return () => {
         dispatch(getUser(username, password))
+        redirect.push('/');
       }
     }
   }

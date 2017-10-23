@@ -9,6 +9,7 @@ class Students extends Component {
   }
 
   render() {
+    const { adminStatus } = this.props;
     return (
       <div>
         <h3>Students</h3>
@@ -30,7 +31,10 @@ class Students extends Component {
                   }
                   </Link>
                 </div>
-                <button onClick={this.props.deleteStudent(student.id)}>DELETE</button>
+                {
+                  adminStatus &&
+                    <button onClick={this.props.deleteStudent(student.id)}>DELETE</button>
+                }
               </li>
             ))
           }
@@ -42,7 +46,8 @@ class Students extends Component {
 
 const mapStateToProps = function(state) {
   return {
-    students: state.students
+    students: state.students,
+    adminStatus: state.log.adminStatus
   }
 }
 
