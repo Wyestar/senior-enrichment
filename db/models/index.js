@@ -14,9 +14,10 @@
 
 const Students = require('./students');
 const Campuses = require('./campuses');
+const Users = require('./users');
 
 Students.belongsTo(Campuses);
 
 module.exports = {
-  Students, Campuses
+  Students, Campuses, Users
 }

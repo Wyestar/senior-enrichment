@@ -70,7 +70,6 @@ api.get('/student/:id', (req, res, next) => {
 });
 
 api.post('/student', (req, res, next) => {
-    console.log(req.body)
   db.models.students.create(req.body).then(student => res.status(201).json(student)).catch((err) => {
     console.log(err)
   })
@@ -87,5 +86,22 @@ api.delete('/student/:id', (req, res, next) => {
     console.log(err)
   })
 });
+
+api.post('/newuser', (req, res, next) => {
+  db.models.users.create(req.body).then(student => res.status(201).json(student)).catch((err) => {
+    console.log(err)
+  })
+});
+
+api.get('/login', (req, res, next) => {
+  db.models.users.findOne({
+    where: {
+      username: req.query.username,
+      password: req.query.password
+    }
+  })
+  .then(user => res.json(user))
+  .catch(next)
+})
 
 module.exports = api

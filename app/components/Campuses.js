@@ -31,7 +31,7 @@ class Campuses extends Component {
     const campusName = this.state.name;
     const campusImage = this.state.image;
     axios.post('/api/campus', {name: campusName, image: campusImage});
-    this.props.history.push('/campuses');
+    this.props.history.push('/');
   }
 
   render() {
@@ -44,7 +44,7 @@ class Campuses extends Component {
             this.props.campuses.map(campus => (
               <li key={campus.id}>
                 <div>
-                  <Link  to={`/campus/${campus.id}`}>
+                  <Link to={`/campus/${campus.id}`}>
                     {campus.name}
                   </Link>
                 </div>
@@ -62,8 +62,8 @@ class Campuses extends Component {
             <button onClick={this.onSubmitHandler} >SUBMIT</button>
           </form>
       </div>
-      )
-    }
+    )
+  }
 }
 
 const mapStateToProps = function(state) {

@@ -6,7 +6,8 @@ function Navbar() {
     <div>
       <Link to="/" >Home___</Link>
       <Link to="/students" >Students___</Link>
-      <Link to="/studententry">Student Entry</Link>
+      <Link to="/studententry">Student Entry___</Link>
+      <Link to="/login">Login</Link>
     </div>
   )
 }

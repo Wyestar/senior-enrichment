@@ -7,9 +7,11 @@ import SingleCampus from './SingleCampus';
 import Students from './Students';
 import SingleStudent from './SingleStudent';
 import StudentEntry from './StudentEntry';
-import { fetchCampuses } from '../reducers/campusReducer';
 import StudentEdit from './StudentEdit';
 import CampusEdit from './CampusEdit';
+import Login from './Login';
+import CreateUser from './CreateUser';
+import { fetchCampuses } from '../reducers/campusReducer';
 
 export default function Root() {
   return (
@@ -25,6 +27,8 @@ export default function Root() {
           <Route exact path="/student/:id" component={SingleStudent} />
           <Route exact path="/student/:id/edit" component={StudentEdit} />
           <Route path="/studententry" component={StudentEntry} />
+          <Route path="/login" component={Login} />
+          <Route path="/createuser" component={CreateUser} />
           <Route component={Campuses} />
         </Switch>
       </div>
